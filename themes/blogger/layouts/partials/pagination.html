@@ -1,0 +1,47 @@
+{{- if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+  <ul class="pagination center">
+     <li>
+      <a  href="{{ .Paginator.First.URL }} " aria-label="Previous">
+        <i class="material-icons">first_page</i>
+      </a>
+    </li>
+    {{- if .Paginator.HasPrev }}
+      <li >
+        <a href="{{ .Paginator.Prev.URL }}" aria-label="Previous">
+          <i class="material-icons">chevron_left</i>
+        </a>
+      </li>
+      {{ else }}
+        <li class="disabled">
+          <a  href="#" aria-label="Previous">
+             <i class="material-icons">chevron_left</i>
+           </a>
+        </li>
+    {{- end }}
+    {{ range .Paginator.Pagers }}     
+      <li>
+        <a href="{{ .URL }}" aria-label="Previous">
+          {{ .PageNumber }}
+        </a>
+      </li>
+    {{ end }} 
+    {{- if .Paginator.HasNext}}
+      <li >
+        <a href="{{ .Paginator.Next.URL }}" aria-label="Previous">
+          <i class="material-icons">chevron_right</i>
+        </a>
+      </li>
+      {{ else }}
+        <li class="disabled">
+          <a  href="#" aria-label="Previous">
+             <i class="material-icons">chevron_right</i>
+           </a>
+        </li>
+    {{- end }}
+    <li>
+      <a  href="{{ .Paginator.Last.URL }} " aria-label="Previous">
+        <i class="material-icons">last_page</i>
+      </a>
+    </li>
+  </ul>
+{{ end }}

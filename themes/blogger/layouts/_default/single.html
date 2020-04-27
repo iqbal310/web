@@ -1,0 +1,22 @@
+{{ define  "main" }} 
+<div class="container">
+  <h3 style="font-family:Times New Roman">{{ .Title }} </h3>
+ </div>
+  <div class="container">
+  <div class="row valign-wrapper">
+  <div  class="col s1">
+    <img  width="32" height="32" class="respnsive-img circle center" src="/img/author/{{ .Params.AuthorImage }}">
+  </div>
+  <div class="col s11">
+    <p class="flow-text">{{ .Params.Author }},
+    <span class="flow-text grey-text">{{- .Date.Format (.Site.Params.dateformat | default "02 January 2006") -}}</span></p>
+  </div>
+  </div>
+  </div>
+  {{- if .Params.thumbnail }}
+    <img class="responsive-img" src="/img/{{ .Params.thumbnail | relURL }}">
+  {{ end }} 
+  <div class="container">
+    {{ .Content }}
+  </div>
+{{ end }}

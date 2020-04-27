@@ -1,0 +1,12 @@
+
+    <div class="col s12 m7" style="margin-top:-5px">
+      <div class="card" style="border-radius:20px">
+      <div class="card-image">
+        <img class="circle" src="/img/{{ .Params.Thumbnail }}">
+        <span class="card-title  {{ .Params.TitleColor }}">{{ .Params.Title}}</span>
+        <a href="{{ .RelPermalink }}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a> 
+      </div>
+      <div class="card-content grey darken-4">
+        <b><p class="text-flow white-text">{{ .Params.ShortText }}</p></b>
+      </div>
+    </div>

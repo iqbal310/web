@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{- with  .Content }} 
+    {{.}}
+  {{- end}}
+  {{ range (.Paginator 2).Pages }}
+	  {{- .Render "summary" }}	  
+  {{ end }}
+  {{- if and (eq .Paginator.TotalNumberOfElements 0) (not $.Content) }}
+	  {{ partial "nopost.html" . }}
+    {{ else }}
+       {{ partial "pagination.html" . }}
+  {{ end }}
+
+{{ end }}

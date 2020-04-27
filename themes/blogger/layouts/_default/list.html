@@ -1,0 +1,18 @@
+{{ define "main" }}
+  {{- with  .Content }} 
+    {{.}}
+  {{ end }}
+ {{ if .Site.Pages }}
+  {{ if eq .Type "coding" }}
+    {{ partial "navbar_coding.html" .}} 
+  {{ end }}
+{{ end }} 
+  {{ range (.Paginator 2).Pages }}
+	  {{- .Render "summary" }}	  
+  {{ end }}
+  {{- if and (eq .Paginator.TotalNumberOfElements 0) (not $.Content) }}
+	  {{ partial "nopost.html" . }}
+     {{ else }}
+       {{ partial "pagination.html" . }}
+  {{ end }}
+{{ end }}
